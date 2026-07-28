@@ -635,27 +635,27 @@ section {
 
 /* project visuals using provided images */
 .work-item:nth-child(1) .work-item-bg {
-    background: url('https://github.com/adezatl/Arklo/raw/main/assets/1.png') center/cover no-repeat;
+    background: url('https://github.com/adezatl/Arklo/images/1.png') center/cover no-repeat;
 }
 
 .work-item:nth-child(2) .work-item-bg {
-    background: url('https://github.com/adezatl/Arklo/raw/main/assets/2.png') center/cover no-repeat;
+    background: url('https://github.com/adezatl/Arklo/images/2.png') center/cover no-repeat;
 }
 
 .work-item:nth-child(3) .work-item-bg {
-    background: url('https://github.com/adezatl/Arklo/raw/main/assets/3.png') center/cover no-repeat;
+    background: url('https://github.com/adezatl/Arklo/images/3.png') center/cover no-repeat;
 }
 
 .work-item:nth-child(4) .work-item-bg {
-    background: url('https://github.com/adezatl/Arklo/raw/main/assets/4.png') center/cover no-repeat;
+    background: url('https://github.com/adezatl/Arklo/images/4.png') center/cover no-repeat;
 }
 
 .work-item:nth-child(5) .work-item-bg {
-    background: url('https://github.com/adezatl/Arklo/raw/main/assets/5.png') center/cover no-repeat;
+    background: url('https://github.com/adezatl/Arklo/images/5.png') center/cover no-repeat;
 }
 
 .work-item:nth-child(6) .work-item-bg {
-    background: url('https://github.com/adezatl/Arklo/raw/main/assets/6.png') center/cover no-repeat;
+    background: url('https://github.com/adezatl/Arklo/images/6.png') center/cover no-repeat;
 }
 
 .work-item-inner-mark {
