@@ -6,993 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arklo — Web Design Studio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet" />
-  <style>
-    /* ── TOKENS ─────────────────────────────────────────────── */
-    :root {
-      --ink: #07070F;
-      --ink-2: #0E0E1A;
-      --ink-3: #141424;
-      --border: rgba(255, 255, 255, 0.07);
-      --dim: rgba(255, 255, 255, 0.18);
-      --mid: rgba(255, 255, 255, 0.48);
-      --bright: rgba(255, 255, 255, 0.92);
-      --accent: #7C85F0;
-      --accent-d: rgba(124, 133, 240, 0.12);
-    }
-
-    /* ── RESET ──────────────────────────────────────────────── */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--ink);
-      color: var(--bright);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── UTILITY ────────────────────────────────────────────── */
-    .eyebrow {
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dim);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 {
-      transition-delay: 0.1s;
-    }
-
-    .reveal-delay-2 {
-      transition-delay: 0.2s;
-    }
-
-    .reveal-delay-3 {
-      transition-delay: 0.32s;
-    }
-
-    .reveal-delay-4 {
-      transition-delay: 0.46s;
-    }
-
-    /* ── NAV ────────────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 24px 56px;
-      background: rgba(7, 7, 15, 0.72);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-      transition: padding 0.3s ease;
-    }
-
-    .nav-logo svg {
-      display: block;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--bright);
-    }
-
-    .nav-cta {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--bright);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      padding: 9px 20px;
-      border-radius: 8px;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .nav-cta:hover {
-      border-color: rgba(255, 255, 255, 0.25);
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    /* ── HERO ───────────────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 140px 32px 100px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* ambient glow */
-    #hero::before {
-      content: '';
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(124, 133, 240, 0.08) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-      pointer-events: none;
-    }
-
-    .hero-logo {
-      margin-bottom: 64px;
-    }
-
-    /* animated logo mark */
-    .hero-logo .mark-back {
-      opacity: 0;
-      animation: fadeUp 0.9s ease 0.2s forwards;
-    }
-
-    .hero-logo .mark-front {
-      opacity: 0;
-      animation: fadeUp 0.9s ease 0.55s forwards;
-    }
-
-    .hero-logo .mark-stray-1 {
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.85s forwards;
-    }
-
-    .hero-logo .mark-stray-2 {
-      opacity: 0;
-      animation: fadeUp 0.7s ease 1.0s forwards;
-    }
-
-    .hero-logo .mark-wordmark {
-      opacity: 0;
-      animation: fadeUp 0.9s ease 0.7s forwards;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-headline {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 200;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      color: var(--bright);
-      max-width: 820px;
-      margin-bottom: 28px;
-      opacity: 0;
-      animation: fadeUp 1s ease 1.0s forwards;
-    }
-
-    .hero-headline em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: var(--dim);
-      letter-spacing: 0.04em;
-      line-height: 1.7;
-      max-width: 400px;
-      margin-bottom: 52px;
-      opacity: 0;
-      animation: fadeUp 1s ease 1.2s forwards;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      opacity: 0;
-      animation: fadeUp 1s ease 1.4s forwards;
-    }
-
-    .btn-primary {
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--ink);
-      background: var(--bright);
-      padding: 13px 28px;
-      border-radius: 9px;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .btn-primary:hover {
-      opacity: 0.88;
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      font-size: 0.82rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--mid);
-      border: 1px solid var(--border);
-      padding: 13px 28px;
-      border-radius: 9px;
-      text-decoration: none;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .btn-ghost:hover {
-      color: var(--bright);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    /* scroll hint */
-    .scroll-hint {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      opacity: 0;
-      animation: fadeUp 1s ease 2s forwards;
-    }
-
-    .scroll-hint span {
-      font-size: 0.55rem;
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.18);
-    }
-
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.18), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollPulse {
-
-      0%,
-      100% {
-        opacity: 0.3;
-      }
-
-      50% {
-        opacity: 0.9;
-      }
-    }
-
-    /* ── SHARED SECTION STYLES ──────────────────────────────── */
-    section {
-      padding: 120px 56px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    /* ── ABOUT ──────────────────────────────────────────────── */
-    #about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-left .eyebrow {
-      margin-bottom: 24px;
-    }
-
-    .about-headline {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 200;
-      line-height: 1.2;
-      letter-spacing: -0.01em;
-      color: var(--bright);
-      margin-bottom: 24px;
-    }
-
-    .about-body {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: var(--mid);
-      line-height: 1.85;
-    }
-
-    .about-body+.about-body {
-      margin-top: 16px;
-    }
-
-    .about-right {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    /* the Arclo quote block */
-    .arclo-quote {
-      border-left: 1px solid var(--accent);
-      padding: 24px 28px;
-      background: var(--accent-d);
-      border-radius: 0 10px 10px 0;
-    }
-
-    .arclo-quote p {
-      font-size: 0.82rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--mid);
-      line-height: 1.9;
-    }
-
-    .arclo-quote p strong {
-      font-weight: 400;
-      font-style: normal;
-      color: rgba(255, 255, 255, 0.65);
-    }
-
-    .about-stat-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .stat {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .stat-num {
-      font-size: 2rem;
-      font-weight: 200;
-      letter-spacing: -0.02em;
-      color: var(--bright);
-    }
-
-    .stat-label {
-      font-size: 0.72rem;
-      font-weight: 400;
-      color: var(--dim);
-      letter-spacing: 0.06em;
-    }
-
-    /* ── SERVICES ───────────────────────────────────────────── */
-    #services {
-      padding-top: 120px;
-      padding-bottom: 120px;
-    }
-
-    .services-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 64px;
-      gap: 40px;
-    }
-
-    .services-headline {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 200;
-      letter-spacing: -0.01em;
-      line-height: 1.18;
-      color: var(--bright);
-      max-width: 400px;
-    }
-
-    .services-note {
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: var(--dim);
-      line-height: 1.75;
-      max-width: 300px;
-      text-align: right;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
-
-    .service-card {
-      background: var(--ink-2);
-      border: 1px solid var(--border);
-      padding: 44px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      transition: background 0.3s ease;
-      cursor: default;
-    }
-
-    .service-card:first-child {
-      border-radius: 12px 0 0 12px;
-    }
-
-    .service-card:last-child {
-      border-radius: 0 12px 12px 0;
-    }
-
-    .service-card:hover {
-      background: var(--ink-3);
-    }
-
-    .service-facet {
-      font-size: 0.58rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .service-name {
-      font-size: 1.25rem;
-      font-weight: 300;
-      letter-spacing: 0.01em;
-      color: var(--bright);
-      line-height: 1.3;
-    }
-
-    .service-desc {
-      font-size: 0.8rem;
-      font-weight: 300;
-      color: var(--mid);
-      line-height: 1.75;
-      flex: 1;
-    }
-
-    .service-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-    }
-
-    .service-list li {
-      font-size: 0.74rem;
-      font-weight: 300;
-      color: var(--dim);
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .service-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.5;
-    }
-
-    /* ── WORK ───────────────────────────────────────────────── */
-    #work {
-      padding-top: 120px;
-      padding-bottom: 60px;
-    }
-
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 48px;
-    }
-
-    .work-headline {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 200;
-      letter-spacing: -0.01em;
-      color: var(--bright);
-    }
-
-    .work-caption {
-      font-size: 0.72rem;
-      font-weight: 300;
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.2);
-      letter-spacing: 0.04em;
-    }
-
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .work-item {
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      background: var(--ink-2);
-      border: 1px solid var(--border);
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .work-item:hover {
-      transform: scale(1.02);
-    }
-
-    .work-item:hover .work-overlay {
-      opacity: 1;
-    }
-
-    .work-item-bg {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* placeholder project visuals using CSS */
-    .work-item:nth-child(1) .work-item-bg {
-      background: linear-gradient(135deg, #0D0D2E 0%, #1A1040 100%);
-    }
-
-    .work-item:nth-child(2) .work-item-bg {
-      background: linear-gradient(135deg, #0A1A18 0%, #0D2820 100%);
-    }
-
-    .work-item:nth-child(3) .work-item-bg {
-      background: linear-gradient(135deg, #1A0D0D 0%, #2A1018 100%);
-    }
-
-    .work-item:nth-child(4) .work-item-bg {
-      background: linear-gradient(135deg, #0D1A10 0%, #142812 100%);
-    }
-
-    .work-item:nth-child(5) .work-item-bg {
-      background: linear-gradient(135deg, #1A150D 0%, #281E10 100%);
-    }
-
-    .work-item:nth-child(6) .work-item-bg {
-      background: linear-gradient(135deg, #0D0D1A 0%, #12102A 100%);
-    }
-
-    .work-item-inner-mark {
-      opacity: 0.12;
-    }
-
-    .work-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(7, 7, 15, 0.82);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
-      gap: 4px;
-    }
-
-    .work-proj-name {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: var(--bright);
-    }
-
-    .work-proj-type {
-      font-size: 0.68rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--dim);
-    }
-
-    .work-more {
-      text-align: center;
-      padding: 40px 0 20px;
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: var(--dim);
-      letter-spacing: 0.04em;
-    }
-
-    /* ── PROCESS ────────────────────────────────────────────── */
-    #process {
-      padding-top: 120px;
-      padding-bottom: 120px;
-    }
-
-    .process-header {
-      margin-bottom: 64px;
-    }
-
-    .process-header .eyebrow {
-      margin-bottom: 20px;
-    }
-
-    .process-headline {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 200;
-      letter-spacing: -0.01em;
-      color: var(--bright);
-    }
-
-    .process-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .process-step {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 40px;
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
-    }
-
-    .process-step:first-child {
-      border-top: 1px solid var(--border);
-    }
-
-    .step-num {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      color: var(--dim);
-      padding-top: 4px;
-    }
-
-    .step-name {
-      font-size: 1.1rem;
-      font-weight: 300;
-      color: var(--bright);
-      margin-bottom: 10px;
-    }
-
-    .step-desc {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: var(--mid);
-      line-height: 1.8;
-      max-width: 560px;
-    }
-
-    .step-arclo {
-      margin-top: 10px;
-      font-size: 0.74rem;
-      font-style: italic;
-      color: rgba(255, 255, 255, 0.2);
-    }
-
-    /* ── CONTACT ────────────────────────────────────────────── */
-    #contact {
-      text-align: center;
-      padding-top: 140px;
-      padding-bottom: 140px;
-    }
-
-    .contact-eyebrow {
-      margin-bottom: 24px;
-    }
-
-    .contact-headline {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      font-weight: 200;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      color: var(--bright);
-      margin-bottom: 20px;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .contact-sub {
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--dim);
-      line-height: 1.75;
-      margin-bottom: 52px;
-      max-width: 380px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      max-width: 480px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .form-field label {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--dim);
-    }
-
-    .form-field input,
-    .form-field textarea,
-    .form-field select {
-      background: var(--ink-2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px 16px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: var(--bright);
-      outline: none;
-      transition: border-color 0.2s;
-      width: 100%;
-    }
-
-    .form-field input::placeholder,
-    .form-field textarea::placeholder {
-      color: rgba(255, 255, 255, 0.2);
-    }
-
-    .form-field input:focus,
-    .form-field textarea:focus,
-    .form-field select:focus {
-      border-color: rgba(124, 133, 240, 0.5);
-    }
-
-    .form-field textarea {
-      resize: vertical;
-      min-height: 110px;
-    }
-
-    .form-field select {
-      appearance: none;
-      cursor: pointer;
-    }
-
-    .form-field select option {
-      background: #0E0E1A;
-    }
-
-    .form-submit {
-      margin-top: 8px;
-      width: 100%;
-      padding: 14px;
-      background: var(--bright);
-      color: var(--ink);
-      border: none;
-      border-radius: 9px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-
-    .form-submit:hover {
-      opacity: 0.88;
-      transform: translateY(-1px);
-    }
-
-    /* ── FOOTER ─────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 60px 56px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .footer-quote {
-      font-size: 0.72rem;
-      font-style: italic;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.16);
-      line-height: 1.9;
-      max-width: 460px;
-    }
-
-    .footer-copy {
-      font-size: 0.65rem;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.14);
-      letter-spacing: 0.06em;
-    }
-
-    .footer-right {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      align-items: flex-end;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 0.72rem;
-      font-weight: 300;
-      color: var(--dim);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--mid);
-    }
-
-    /* ── MOBILE ─────────────────────────────────────────────── */
-    @media (max-width: 768px) {
-      nav {
-        padding: 20px 24px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      section {
-        padding: 80px 24px;
-      }
-
-      footer {
-        padding: 48px 24px;
-      }
-
-      #about {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-card:first-child {
-        border-radius: 12px 12px 0 0;
-      }
-
-      .service-card:last-child {
-        border-radius: 0 0 12px 12px;
-      }
-
-      .work-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .services-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .services-note {
-        text-align: left;
-      }
-
-      .work-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-right {
-        align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .work-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-
-      .reveal,
-      .hero-logo *,
-      .hero-headline,
-      .hero-sub,
-      .hero-actions,
-      .scroll-hint {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
@@ -1015,7 +29,27 @@
       <li><a href="#work">Work</a></li>
       <li><a href="#process">Process</a></li>
     </ul>
-    <a class="nav-cta" href="#contact">Start a project</a>
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <a class="nav-cta" href="#contact">Start a project</a>
+    </div>
   </nav>
 
   <!-- ══ HERO ══════════════════════════════════════════════════ -->
@@ -1024,14 +58,14 @@
     <!-- animated logo mark -->
     <div class="hero-logo">
       <svg width="220" height="68" viewBox="0 0 220 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect class="mark-stray-1" x="0" y="4" width="6" height="6" rx="1.5" fill="#fff" opacity="0.07" />
-        <rect class="mark-back" x="5" y="12" width="22" height="36" rx="3.5" fill="none" stroke="#fff"
+        <rect class="mark-stray-1" x="0" y="4" width="6" height="6" rx="1.5" fill="currentColor" opacity="0.07" />
+        <rect class="mark-back" x="5" y="12" width="22" height="36" rx="3.5" fill="none" stroke="currentColor"
           stroke-width="1.5" opacity="0.28" />
-        <rect class="mark-front" x="18" y="22" width="22" height="36" rx="3.5" fill="none" stroke="#fff"
+        <rect class="mark-front" x="18" y="22" width="22" height="36" rx="3.5" fill="none" stroke="currentColor"
           stroke-width="1.5" />
-        <rect class="mark-stray-2" x="42" y="56" width="5" height="5" rx="1.2" fill="#fff" opacity="0.08" />
+        <rect class="mark-stray-2" x="42" y="56" width="5" height="5" rx="1.2" fill="currentColor" opacity="0.08" />
         <text class="mark-wordmark" x="58" y="46" font-family="Inter,sans-serif" font-size="30" font-weight="200"
-          letter-spacing="7" fill="#fff">ARKLO</text>
+          letter-spacing="7" fill="currentColor">ARKLO</text>
       </svg>
     </div>
 
@@ -1181,9 +215,9 @@
       <div class="work-item reveal">
         <div class="work-item-bg">
           <svg class="work-item-inner-mark" width="60" height="60" viewBox="0 0 44 44" fill="none">
-            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4"
+            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"
               opacity="0.32" />
-            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4" />
+            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4" />
           </svg>
         </div>
         <div class="work-overlay">
@@ -1195,9 +229,9 @@
       <div class="work-item reveal reveal-delay-1">
         <div class="work-item-bg">
           <svg class="work-item-inner-mark" width="60" height="60" viewBox="0 0 44 44" fill="none">
-            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4"
+            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"
               opacity="0.32" />
-            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4" />
+            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4" />
           </svg>
         </div>
         <div class="work-overlay">
@@ -1209,9 +243,9 @@
       <div class="work-item reveal reveal-delay-2">
         <div class="work-item-bg">
           <svg class="work-item-inner-mark" width="60" height="60" viewBox="0 0 44 44" fill="none">
-            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4"
+            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"
               opacity="0.32" />
-            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4" />
+            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4" />
           </svg>
         </div>
         <div class="work-overlay">
@@ -1223,9 +257,9 @@
       <div class="work-item reveal reveal-delay-1">
         <div class="work-item-bg">
           <svg class="work-item-inner-mark" width="60" height="60" viewBox="0 0 44 44" fill="none">
-            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4"
+            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"
               opacity="0.32" />
-            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4" />
+            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4" />
           </svg>
         </div>
         <div class="work-overlay">
@@ -1237,9 +271,9 @@
       <div class="work-item reveal reveal-delay-2">
         <div class="work-item-bg">
           <svg class="work-item-inner-mark" width="60" height="60" viewBox="0 0 44 44" fill="none">
-            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4"
+            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"
               opacity="0.32" />
-            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4" />
+            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4" />
           </svg>
         </div>
         <div class="work-overlay">
@@ -1251,9 +285,9 @@
       <div class="work-item reveal reveal-delay-3">
         <div class="work-item-bg">
           <svg class="work-item-inner-mark" width="60" height="60" viewBox="0 0 44 44" fill="none">
-            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4"
+            <rect x="4" y="8" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"
               opacity="0.32" />
-            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="#fff" stroke-width="1.4" />
+            <rect x="14" y="16" width="18" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.4" />
           </svg>
         </div>
         <div class="work-overlay">
@@ -1365,18 +399,22 @@
   <footer>
     <div class="footer-left">
       <svg width="90" height="24" viewBox="0 0 90 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="0" y="2" width="2.5" height="2.5" rx="0.6" fill="#fff" opacity="0.07" />
-        <rect x="2" y="4" width="9" height="15" rx="1.8" fill="none" stroke="#fff" stroke-width="1" opacity="0.25" />
-        <rect x="7" y="8" width="9" height="15" rx="1.8" fill="none" stroke="#fff" stroke-width="1" opacity="0.7" />
+        <rect x="0" y="2" width="2.5" height="2.5" rx="0.6" fill="currentColor" opacity="0.07" />
+        <rect x="2" y="4" width="9" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1"
+          opacity="0.25" />
+        <rect x="7" y="8" width="9" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1"
+          opacity="0.7" />
         <text x="20" y="18" font-family="Inter,sans-serif" font-size="11" font-weight="300" letter-spacing="2.5"
-          fill="#fff" opacity="0.6">ARKLO</text>
+          fill="currentColor" opacity="0.6">ARKLO</text>
       </svg>
       <p class="footer-quote">
         "He changes moment by moment — at one moment the eyes,<br />
         at another the mouth, and so at times the disease,<br />
         most of which live."
       </p>
-      <p class="footer-copy">© 2025 Arklo Studio. All rights reserved.</p>
+      <p class="footer-copy">&copy;
+        <script>document.write(new Date().getFullYear())</script> Arklo Studio. All rights reserved.
+      </p>
     </div>
 
     <div class="footer-right">
@@ -1390,19 +428,7 @@
     </div>
   </footer>
 
-  <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
-  </script>
+  <script src="script.js"></script>
 
 </body>
 
