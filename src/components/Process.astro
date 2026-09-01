@@ -1,0 +1,47 @@
+---
+const steps = [
+  {
+    num: "Inspect",
+    name: "Discovery & listening",
+    desc: "We begin by understanding your world — your audience, your competitors, and what you're actually trying to say. No assumptions, no templates brought in from a previous project.",
+    arclo: "The eyes, first.",
+  },
+  {
+    num: "Shape",
+    name: "Design & iteration",
+    desc: "We design in the open — sharing concepts early, revising often, and treating feedback as material. The work improves every time we look at it together.",
+    arclo: "The mouth, forming words.",
+  },
+  {
+    num: "Build",
+    name: "Development & delivery",
+    desc: "Clean code, fast load times, accessible markup. We build what was designed — no shortcuts, no approximations. What goes live is what you approved.",
+    arclo: "Most of which live.",
+  },
+  {
+    num: "Spread",
+    name: "Launch & beyond",
+    desc: "We don't disappear after handoff. Your site is a living thing — we help it grow, adapt, and reach further. Some clients have been with us since their first site.",
+    arclo: "Like a disease, most of which live.",
+  },
+];
+---
+<section id="process">
+  <div class="process-header">
+    <p class="eyebrow reveal">How we work</p>
+    <h2 class="process-headline reveal reveal-delay-1">Not one to leave<br />tasks unfinished.</h2>
+  </div>
+
+  <div class="process-steps">
+    {steps.map((step) => (
+      <div class="process-step reveal">
+        <span class="step-num">{step.num}</span>
+        <div class="step-content">
+          <h3 class="step-name">{step.name}</h3>
+          <p class="step-desc">{step.desc}</p>
+          <p class="step-arclo">{step.arclo}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+---
+<section id="contact">
+  <p class="eyebrow contact-eyebrow reveal">Start a project</p>
+  <h2 class="contact-headline reveal reveal-delay-1">
+    Let's build something that spreads.
+  </h2>
+  <p class="contact-sub reveal reveal-delay-2">
+    Tell us about your project. We'll respond within 48 hours with an honest take on how we can help.
+  </p>
+
+  <form class="contact-form reveal reveal-delay-2" onsubmit="return false;">
+    <div class="form-row">
+      <div class="form-field">
+        <label for="name">Your name</label>
+        <input type="text" id="name" placeholder="Coppermind Arclo" required />
+      </div>
+      <div class="form-field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="arclo@mail.com" required />
+      </div>
+      <div class="form-field">
+        <label for="number">Your number</label>
+        <input type="tel" id="name" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="+234 xxx xxxx xxx" required />
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="project-type">Type of project</label>
+      <select id="project-type" required>
+        <option value="" disabled selected>Select one...</option>
+        <option>New website</option>
+        <option>Redesign</option>
+        <option>Brand identity</option>
+        <option>Design system</option>
+        <option>Something else</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <label for="message">Tell us about it</label>
+      <textarea id="message" placeholder="What are you building? Who is it for? What does success look like?" required></textarea>
+    </div>
+    <button class="form-submit" type="submit">Send it →</button>
+  </form>
+</section>

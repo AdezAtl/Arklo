@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Arklo — Web Design Studio",
+  description = "Arklo is a bespoke web design studio shaping brands that move, spread, and live."
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <!-- Open Graph / SEO -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/dark-logo.svg" />
+    <link rel="alternate icon" type="image/png" href="/images/dark-logo.png" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet" />
+
+    <!-- Theme Initialization Script (Prevents FOUC) -->
+    <script is:inline>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          // If user prefers light theme by default
+          // Defaulting to dark as per original Arklo design unless set
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <!-- Client-side Scripts: Scroll Reveal and Theme Toggle -->
+    <script>
+      function setupInteractive() {
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+              observer.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        reveals.forEach((el) => observer.observe(el));
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const root = document.documentElement;
+
+        if (themeToggle) {
+          // Remove any duplicate listeners by cloning or checking
+          themeToggle.onclick = () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+          };
+        }
+      }
+
+      // Run on initial load and on view transitions if enabled
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupInteractive);
+      } else {
+        setupInteractive();
+      }
+      document.addEventListener('astro:page-load', setupInteractive);
+    </script>
+  </body>
+</html>
