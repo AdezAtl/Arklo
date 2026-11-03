@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Development Services &amp; Modular Pricing — Arklo Digital</title>
+  <meta name="description" content="Modular web engineering and transparent pricing for startups and boutique brands. Single-page builds, multi-page platforms, CMS setups, and performance audits." />
+
+  <!-- Open Graph / SEO -->
+  <meta property="og:title" content="Web Development Services &amp; Modular Pricing — Arklo Digital" />
+  <meta property="og:description" content="Modular web engineering and transparent pricing for startups and boutique brands. Single-page builds, multi-page platforms, CMS setups, and performance audits." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="images/dark-logo.svg" />
+  <link rel="alternate icon" type="image/png" href="images/dark-logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Theme Initialization Script -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- ══ NAV ══════════════════════════════════════════════════ -->
+  <nav>
+    <a class="nav-logo" href="index.html" aria-label="Arklo Home">
+      <svg width="110" height="28" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="2" width="3" height="3" rx="0.8" fill="#fff" opacity="0.08" />
+        <rect x="2" y="5" width="11" height="18" rx="2" fill="none" stroke="#fff" stroke-width="1.1" opacity="0.3" />
+        <rect x="8" y="10" width="11" height="18" rx="2" fill="none" stroke="#fff" stroke-width="1.1" />
+        <rect x="21" y="25" width="2.5" height="2.5" rx="0.6" fill="#fff" opacity="0.08" />
+        <text x="28" y="21" font-family="Inter,sans-serif" font-size="13" font-weight="300" letter-spacing="3" fill="#fff">ARKLO</text>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="services.html" class="active">Services &amp; Pricing</a></li>
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#process">Process</a></li>
+    </ul>
+    <div style="display: flex; gap: 16px; align-items: center;">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" type="button">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+      <a class="nav-cta" href="#quote-form">Start a project</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="pricing-hero">
+      <p class="eyebrow reveal">Arklo Digital &mdash; Web Engineering &amp; Services</p>
+      <h1 class="pricing-headline reveal reveal-delay-1">
+        Modular engineering.<br /><em>Predictable</em> pricing.
+      </h1>
+      <p class="pricing-sub reveal reveal-delay-2">
+        We build fast, bespoke websites for early-stage startups, tech founders, and boutique brands. 
+        Select the exact functional modules you need with zero agency bloat.
+      </p>
+
+      <div class="pricing-trust-bar reveal reveal-delay-3">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Sub-1s Initial Load Times</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>100% Codebase Ownership</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Zero Template Dependencies</span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Direct Senior Engineer Access</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- MODULAR SERVICES GRID -->
+    <section id="modular-packages">
+      <div class="services-header">
+        <div>
+          <p class="eyebrow reveal">Modular Scopes</p>
+          <h2 class="services-headline reveal reveal-delay-1">
+            À la carte packages<br />built to scale.
+          </h2>
+        </div>
+        <p class="services-note reveal reveal-delay-1">
+          Every project is scoped to tangible deliverables. Pay only for the architecture your business needs today.
+        </p>
+      </div>
+
+      <div class="modular-grid">
+        <!-- MODULE 01 -->
+        <div class="modular-card reveal">
+          <div class="modular-top">
+            <span class="module-badge">Rapid Launch</span>
+            <span class="module-timeline">5&ndash;7 days</span>
+          </div>
+          <h3 class="module-title">Single-Page Launchpad</h3>
+          <div class="module-price-wrap">
+            <span class="module-price">$950</span>
+            <span class="module-term">fixed price</span>
+          </div>
+          <p class="module-desc">
+            A high-conversion landing page engineered to validate product-market fit, capture early waitlists, or launch marketing campaigns.
+          </p>
+          <ul class="module-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Custom responsive layout (Astro + semantic CSS)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Sub-1-second mobile and desktop load speed</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Integrated lead capture form (Resend/Formspree)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Social OpenGraph meta tags &amp; favicon bundle</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Automated deployment to Vercel or Cloudflare</span>
+            </li>
+          </ul>
+          <a href="#quote-form" class="modular-btn modular-btn-ghost" data-package="Single-Page Launchpad ($950)">Select Launchpad</a>
+        </div>
+
+        <!-- MODULE 02 (FEATURED) -->
+        <div class="modular-card highlight reveal reveal-delay-1">
+          <div class="modular-top">
+            <span class="module-badge">Most Popular</span>
+            <span class="module-timeline">2&ndash;3 weeks</span>
+          </div>
+          <h3 class="module-title">Multi-Page Web Platform</h3>
+          <div class="module-price-wrap">
+            <span class="module-price">$2,400</span>
+            <span class="module-term">fixed price</span>
+          </div>
+          <p class="module-desc">
+            A custom web presence for startups and businesses ready to establish market authority with custom templates and clean design.
+          </p>
+          <ul class="module-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Up to 5 bespoke page templates (Home, About, Services, Case Studies, Contact)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Component design system with reusable UI tokens</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Persistent dark and light theme toggle</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Technical SEO setup, XML sitemap, and robots.txt</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Cross-browser testing (Chrome, Safari, iOS, Android)</span>
+            </li>
+          </ul>
+          <a href="#quote-form" class="modular-btn modular-btn-primary" data-package="Multi-Page Custom Web Platform ($2,400)">Select Web Platform</a>
+        </div>
+
+        <!-- MODULE 03 -->
+        <div class="modular-card reveal reveal-delay-2">
+          <div class="modular-top">
+            <span class="module-badge">Content Ops</span>
+            <span class="module-timeline">3&ndash;5 days</span>
+          </div>
+          <h3 class="module-title">Headless CMS Setup</h3>
+          <div class="module-price-wrap">
+            <span class="module-price">$850</span>
+            <span class="module-term">module fee</span>
+          </div>
+          <p class="module-desc">
+            Equip your editorial team with an intuitive dashboard to publish blog posts, team updates, and case studies without touching code.
+          </p>
+          <ul class="module-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Sanity, Decap CMS, or Astro Content Collections</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Custom structured schemas for posts, tags, and authors</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Real-time content staging and preview links</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Automated static rebuilds triggered via publish webhooks</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Recorded video walkthrough guide for non-technical editors</span>
+            </li>
+          </ul>
+          <a href="#quote-form" class="modular-btn modular-btn-ghost" data-package="Headless CMS Integration ($850)">Select CMS Module</a>
+        </div>
+
+        <!-- MODULE 04 -->
+        <div class="modular-card reveal">
+          <div class="modular-top">
+            <span class="module-badge">Optimization</span>
+            <span class="module-timeline">3&ndash;4 days</span>
+          </div>
+          <h3 class="module-title">Performance &amp; Core Web Vitals</h3>
+          <div class="module-price-wrap">
+            <span class="module-price">$700</span>
+            <span class="module-term">one-time audit &amp; fix</span>
+          </div>
+          <p class="module-desc">
+            Eliminate slow loading times, render-blocking scripts, and layout shifts on your existing site to increase conversions and SEO rank.
+          </p>
+          <ul class="module-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Full network waterfall and script payload profiling</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Image compression pipeline (WebP/AVIF generation)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Removal of unused CSS, fonts, and blocking JavaScript</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Target 95+ mobile and 100 desktop Core Web Vitals</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Before-and-after audit report with verified benchmarks</span>
+            </li>
+          </ul>
+          <a href="#quote-form" class="modular-btn modular-btn-ghost" data-package="Performance &amp; Core Web Vitals Overhaul ($700)">Select Performance Fix</a>
+        </div>
+
+        <!-- MODULE 05 -->
+        <div class="modular-card reveal reveal-delay-1">
+          <div class="modular-top">
+            <span class="module-badge">Custom Feature</span>
+            <span class="module-timeline">3&ndash;5 days</span>
+          </div>
+          <h3 class="module-title">Interactive Tool / Island</h3>
+          <div class="module-price-wrap">
+            <span class="module-price">$650</span>
+            <span class="module-term">per component</span>
+          </div>
+          <p class="module-desc">
+            Bespoke interactive widgets such as pricing calculators, product selectors, or custom data visualization graphics.
+          </p>
+          <ul class="module-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Lightweight client logic with zero third-party dependencies</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Keyboard accessible and ARIA compliant</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Responsive touch controls tested on mobile devices</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Isolated component architecture that integrates anywhere</span>
+            </li>
+          </ul>
+          <a href="#quote-form" class="modular-btn modular-btn-ghost" data-package="Custom Engineering Bundle">Select Custom Tool</a>
+        </div>
+
+        <!-- MODULE 06 -->
+        <div class="modular-card reveal reveal-delay-2">
+          <div class="modular-top">
+            <span class="module-badge">Support Retainer</span>
+            <span class="module-timeline">Ongoing</span>
+          </div>
+          <h3 class="module-title">Technical Care Retainer</h3>
+          <div class="module-price-wrap">
+            <span class="module-price">$350</span>
+            <span class="module-term">per month</span>
+          </div>
+          <p class="module-desc">
+            Keep your digital presence secure, fast, and up to date without hiring an in-house developer. Cancel anytime.
+          </p>
+          <ul class="module-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>4 hours of dedicated developer work each month</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Content adjustments, new sections, and design refinements</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Continuous uptime checks and security patches</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Direct Slack or email communication with 24h response SLA</span>
+            </li>
+          </ul>
+          <a href="#quote-form" class="modular-btn modular-btn-ghost" data-package="Technical Care Retainer ($350/mo)">Select Care Retainer</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- STANDARDS / INVARIANTS SECTION -->
+    <section id="build-standards">
+      <div class="services-header">
+        <div>
+          <p class="eyebrow reveal">Engineering Standard</p>
+          <h2 class="services-headline reveal reveal-delay-1">
+            Every build meets<br />these invariants.
+          </h2>
+        </div>
+        <p class="services-note reveal reveal-delay-1">
+          No quick shortcuts or fragile glue code. We engineer sites to remain stable over years of operation.
+        </p>
+      </div>
+
+      <div class="standards-grid">
+        <div class="standard-card reveal">
+          <span class="standard-num">01 / DISCIPLINE</span>
+          <h3 class="standard-title">Systematic Spacing Rhythm</h3>
+          <p class="standard-desc">
+            Strict 8-point geometric layout scale. Zero improvised pixel margins or inconsistent visual paddings.
+          </p>
+        </div>
+
+        <div class="standard-card reveal reveal-delay-1">
+          <span class="standard-num">02 / EFFICIENCY</span>
+          <h3 class="standard-title">Static-First Architecture</h3>
+          <p class="standard-desc">
+            Pages compile ahead of time into clean HTML and CSS, loading instantly across edge content distribution networks.
+          </p>
+        </div>
+
+        <div class="standard-card reveal reveal-delay-2">
+          <span class="standard-num">03 / AUTONOMY</span>
+          <h3 class="standard-title">Full Code Ownership</h3>
+          <p class="standard-desc">
+            Every line of code and configuration lives in your own Git repository. Zero vendor lock-in or recurring platform fees.
+          </p>
+        </div>
+
+        <div class="standard-card reveal reveal-delay-3">
+          <span class="standard-num">04 / ACCESSIBILITY</span>
+          <h3 class="standard-title">Accessible by Default</h3>
+          <p class="standard-desc">
+            High-contrast text ratios, full keyboard tab navigation, and semantic HTML5 landmark tags across all screen sizes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- FAQ SECTION -->
+    <section id="pricing-faq">
+      <div style="text-align: center; max-width: 600px; margin: 0 auto 32px;">
+        <p class="eyebrow reveal">Clear Answers</p>
+        <h2 class="services-headline reveal reveal-delay-1" style="max-width: 100%;">
+          Frequently asked questions.
+        </h2>
+      </div>
+
+      <div class="faq-grid reveal reveal-delay-2">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>How do payments and milestones work?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </summary>
+          <div class="faq-answer">
+            Every project runs on a transparent 50/50 model: a 50% deposit to confirm your development sprint slot, and the remaining 50% upon final verification and live deployment handover. Retainers are billed monthly in advance and can be paused or cancelled at any time.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>What technology stack do you build with?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </summary>
+          <div class="faq-answer">
+            We use Astro, modern semantic HTML5, clean CSS, and TypeScript. By default, our sites ship zero unneeded client JavaScript, ensuring sub-second loading speeds. For content management, we connect Sanity, Decap CMS, or Astro Content Collections.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Can I start with a single-page site and expand later?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </summary>
+          <div class="faq-answer">
+            Yes. Our architecture is modular by design. You can deploy a Single-Page Launchpad ($950) today, then add CMS blogging, multi-page templates, or interactive calculators down the road without rewriting the existing codebase.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Do I need to supply complete designs or copy?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </summary>
+          <div class="faq-answer">
+            If you have existing brand assets and copy, we build directly from them. If you only have a concept or rough notes, we structure your messaging hierarchy, typography, and layout logic during our initial discovery pass.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>Where is the website hosted?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </summary>
+          <div class="faq-answer">
+            We set up your deployment pipeline on Cloudflare Pages, Vercel, or Netlify under your own account. Hosting for static sites on these platforms is typically $0/month for standard traffic tiers, giving you zero monthly overhead.
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PROJECT INQUIRY FORM -->
+    <section id="quote-form">
+      <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+        <p class="eyebrow contact-eyebrow reveal">Start a Project</p>
+        <h2 class="contact-headline reveal reveal-delay-1">
+          Lock in your development sprint.
+        </h2>
+        <p class="contact-sub reveal reveal-delay-2">
+          Select your required scope below. We reply within 24 hours with an itemized specification and scheduled start date.
+        </p>
+
+        <form class="contact-form reveal reveal-delay-3" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="quote-name">Your Name</label>
+              <input type="text" id="quote-name" placeholder="Alex Morgan" required />
+            </div>
+            <div class="form-field">
+              <label for="quote-email">Email Address</label>
+              <input type="email" id="quote-email" placeholder="alex@company.com" required />
+            </div>
+            <div class="form-field">
+              <label for="quote-phone">Phone / WhatsApp</label>
+              <input type="tel" id="quote-phone" placeholder="+1 xxx xxx xxxx" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="quote-package">Selected Service Module</label>
+            <select id="quote-package" required>
+              <option value="" disabled selected>Select a package or bundle...</option>
+              <option value="Single-Page Launchpad ($950)">Single-Page Launchpad &mdash; $950</option>
+              <option value="Multi-Page Custom Web Platform ($2,400)">Multi-Page Custom Web Platform &mdash; $2,400</option>
+              <option value="Headless CMS Integration ($850)">Headless CMS Integration &mdash; $850</option>
+              <option value="Performance &amp; Core Web Vitals Overhaul ($700)">Performance &amp; Core Web Vitals Overhaul &mdash; $700</option>
+              <option value="Custom Engineering Bundle">Custom Component / Tool &mdash; $650</option>
+              <option value="Technical Care Retainer ($350/mo)">Technical Care Retainer &mdash; $350 / month</option>
+              <option value="Custom Engineering Bundle">Custom Engineering Bundle (Multiple Modules)</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="quote-timeline">Desired Launch Window</label>
+            <select id="quote-timeline" required>
+              <option value="As soon as possible">As soon as possible (Next available sprint)</option>
+              <option value="Within 2 to 4 weeks">Within 2 to 4 weeks</option>
+              <option value="Next quarter">Next quarter</option>
+              <option value="Flexible timeline">Flexible timeline</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="quote-message">Project Overview</label>
+            <textarea id="quote-message" placeholder="Briefly describe what your business does, your existing website link (if any), and your goals for this build." required></textarea>
+          </div>
+
+          <button class="form-submit" type="submit">Submit Project Scope &rarr;</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      <svg width="90" height="24" viewBox="0 0 90 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="2" width="2.5" height="2.5" rx="0.6" fill="currentColor" opacity="0.07" />
+        <rect x="2" y="4" width="9" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25" />
+        <rect x="7" y="8" width="9" height="15" rx="1.8" fill="none" stroke="currentColor" stroke-width="1" opacity="0.7" />
+        <text x="20" y="18" font-family="Inter,sans-serif" font-size="11" font-weight="300" letter-spacing="2.5" fill="currentColor" opacity="0.6">ARKLO</text>
+      </svg>
+      <p class="footer-quote">
+        "He changes moment by moment — at one moment the eyes,<br />
+        at another the mouth, and so at times the disease,<br />
+        most of which live."
+      </p>
+      <p class="footer-copy">&copy; <script>document.write(new Date().getFullYear())</script> Arklo Digital. All rights reserved.</p>
+    </div>
+
+    <div class="footer-right">
+      <ul class="footer-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="services.html">Services &amp; Pricing</a></li>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <p class="footer-copy">hello@arklo.studio</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.querySelectorAll('[data-package]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        var pkg = this.getAttribute('data-package');
+        var select = document.getElementById('quote-package');
+        if (select && pkg) {
+          select.value = pkg;
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

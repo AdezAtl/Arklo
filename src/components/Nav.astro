@@ -1,7 +1,14 @@
 ---
+interface Props {
+  isSubpage?: boolean;
+  currentPage?: string;
+}
+
+const { isSubpage = false, currentPage = 'home' } = Astro.props;
+const homeBase = isSubpage ? '/' : '';
 ---
 <nav>
-  <a class="nav-logo" href="#hero" aria-label="Arklo Home">
+  <a class="nav-logo" href={isSubpage ? "/" : "#hero"} aria-label="Arklo Home">
     <svg width="110" height="28" viewBox="0 0 110 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="2" width="3" height="3" rx="0.8" fill="#fff" opacity="0.08" />
       <rect x="2" y="5" width="11" height="18" rx="2" fill="none" stroke="#fff" stroke-width="1.1" opacity="0.3" />
@@ -11,10 +18,10 @@
     </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#process">Process</a></li>
+    <li><a href={`${homeBase}#about`}>About</a></li>
+    <li><a href="/services" class={currentPage === 'services' ? 'active' : ''}>Services &amp; Pricing</a></li>
+    <li><a href={`${homeBase}#work`}>Work</a></li>
+    <li><a href={`${homeBase}#process`}>Process</a></li>
   </ul>
   <div style="display: flex; gap: 16px; align-items: center;">
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme" type="button">
@@ -33,6 +40,6 @@
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
       </svg>
     </button>
-    <a class="nav-cta" href="#contact">Start a project</a>
+    <a class="nav-cta" href={isSubpage ? "#quote-form" : "#contact"}>Start a project</a>
   </div>
 </nav>
